@@ -7,7 +7,7 @@ import urllib.request
 
 app = Flask(__name__)
 
-loaded_model = load_model('facefeatures_new_model.h5')
+loaded_model = load_model('https://drive.google.com/file/d/1yRa-OOHz8WV5yMiPay04pE-XCK3keT-t/view?usp=sharing')
 
 np.set_printoptions(suppress=True)
 
