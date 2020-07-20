@@ -7,7 +7,7 @@ import urllib.request
 
 app = Flask(__name__)
 
-loaded_model = load_model('saved_model.pb')
+loaded_model = load_model('keras_model.h5')
 
 np.set_printoptions(suppress=True)
 
