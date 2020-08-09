@@ -1,0 +1,57 @@
+{"intents": [
+        {"tag": "greeting",
+         "patterns": ["Hi", "How are you?", "Is anyone there?", "Hello", "Hai"],
+         "responses": ["Hello, How can I help you?", "Good to see you again", "Hi there, welcome."],
+         "context_set": ""
+        },
+        {"tag": "goodbye",
+         "patterns": ["Bye", "See you later", "Goodbye"],
+         "responses": ["See you later, Bye", "Have a nice day", "Bye! Come back again soon."]
+        },
+        {"tag": "thanks",
+         "patterns": ["Thanks", "Thank you", "That's helpful"],
+         "responses": ["Happy to help!", "Any time!", "My pleasure"]
+        },
+        {"tag": "skin_disease_1",
+         "patterns": ["What are top skin diseases?", "Tell some skin diseases?", "some skin diseases?" ],
+         "responses": ["The Most Common Skin Diseases are \n 1. Acne \n 2. SoresHives \n 3. Rosacea \n 4. Eczema \n 5. Psoriasis \n 6. Keratosis Pilaris \n 7. Melanoma"]
+        },
+        {"tag": "skin_details",
+         "patterns": ["Who treats skin diseases?", "Who is doctor for skin disease?", "Skin care doctor?", "Skin Disease Study", "Study of Skin Disease" ],
+         "responses": ["The Study of Skin Care is Dermatology and A doctor who specializes in skin care, called a dermatologist"]
+        },
+        {"tag": "skin_tips",
+         "patterns": ["Skin care tips?", "Suggest some skin care tips?", "skin care tips?"],
+         "responses": ["1. Stay hydrated. \n 2. Change pillow cases at least once a week. \n 3. Wash or wrap up hair before bed. \n 4. Wear sunscreen every day and apply 15 minutes before going out."]
+        },
+        {"tag": "images",
+         "patterns": ["Where you got images to train?", "Images for Training"],
+         "responses": ["We have done Web Scrapping"]
+        },
+        {"tag": "creator",
+         "patterns": ["Who created you?", "Who build you?", "Who trained you?", "Who made you?"],
+         "responses": ["Anandha Murthy B"]
+        },
+        {"tag": "acne",
+         "patterns": ["Acne ?", "What is Acne?", "Acne Skin Disease?", "Acne means", "Acne"],
+         "responses": ["A skin condition that occurs when hair follicles plug with oil and dead skin cells. Acne is most common in teenagers and young adults. Symptoms range from uninflamed blackheads to pus-filled pimples or large, red and tender bumps. Treatments include over-the-counter creams and cleanser, as well as prescription antibiotics."]
+        },
+        {"tag": "rosacea",
+         "patterns": ["Rosacea ?", "What is Rosacea?", "Rosacea Skin Disease?", "Rosacea means", "Rosacea"],
+         "responses": ["A condition that causes redness and often small, red, pus-filled bumps on the face. Rosacea most commonly affects middle-aged women with fair skin. It can be mistaken for acne or other skin conditions. Key symptoms are facial redness with swollen red bumps and small visible blood vessels.Treatments such as antibiotics or anti-acne medication can control and reduce symptoms. Left untreated, it tends to worsen over time."]
+        },
+        {"tag": "tinea_pedis",
+         "patterns": ["Tinea pedis ?", "What is Tinea pedis?", "Tinea pedis Skin Disease?", "Tinea pedis means", "Tinea pedis"],
+         "responses": ["A fungal infection that usually begins between the toes. Athlete's foot commonly occurs in people whose feet have become very sweaty while confined within tight-fitting shoes. Symptoms include a scaly rash that usually causes itching, stinging and burning. People with athlete's foot can have moist, raw skin between their toes. Treatment involves topical anti-fungal medication."]
+        },
+        {"tag": "urticaria",
+         "patterns": ["Urticaria ?", "What is Urticaria?", "Urticaria Skin Disease?", "Urticaria means", "Urticaria"],
+         "responses": ["A skin rash triggered by a reaction to food, medicine or other irritants. Hives is a common skin rash triggered by many things, including certain foods, medication and stress. Symptoms include itchy, raised, red or skin-coloured welts on the skin's surface. Hives usually go away without treatment, but antihistamine medication is often helpful in improving symptoms."]
+        },
+        {"tag": "rosacea",
+         "patterns": ["Vitiligo ?", "What is Vitiligo?", "Vitiligo Skin Disease?", "Vitiligo means", "Vitiligo"],
+         "responses": ["A disease that causes the loss of skin colour in blotches. Vitiligo occurs when pigment-producing cells die or stop functioning. Loss of skin colour can affect any part of the body, including the mouth, hair and eyes. It may be more noticeable in people with darker skin. Treatment may improve the appearance of the skin but doesn't cure the disease."]
+        }
+        
+   ]
+}
