@@ -1,36 +1,62 @@
-from PIL import Image, ImageOps
-import numpy as np
-from tensorflow.keras.models import load_model
+import nltk
+nltk.download('punkt')
+nltk.download('wordnet')
+import numpy
+import random
+from nltk.stem import WordNetLemmatizer
+stemmer=WordNetLemmatizer()
 from flask import Flask
-from urllib.request import Request
-import urllib.request
+import pickle
+import pandas as pd
 
 app = Flask(__name__)
+model = pickle.load(open('model.pkl', 'rb'))
 
-loaded_model = load_model('keras_model.h5')
+def bag_of_words(s, words):
+    bag = [0 for _ in range(len(words))]
 
-np.set_printoptions(suppress=True)
+    s_words = nltk.word_tokenize(s)
+    s_words = [stemmer.lemmatize(word.lower()) for word in s_words]
 
-data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
+    for se in s_words:
+        for i, w in enumerate(words):
+            if w == se:
+                bag[i] = 1
 
-@app.route('/predict/<image_url>',methods=['GET','POST'])
-def predict(image_url):
+    return numpy.array(bag)
 
-    url='https://firebasestorage.googleapis.com/v0/b/amhealthbot-9412a.appspot.com/o/'+image_url
-    # response = requests.get(url)
-    # image_bytes = BytesIO(response.content)
-    #img = Image.open(image_bytes)
-    urllib.request.urlretrieve(url, "sample.png")
-    #img = PIL.Image.open("sample.png")
-    size = (224, 224)
-    image = Image.open("sample.png")
-    image = ImageOps.fit(image, size, Image.ANTIALIAS)
+@app.route('/predict/<msg>',methods=['GET','POST'])
+def predict(msg):
+    data = pd.read_json('amhealthbot.json')
+    words = []
+    labels = []
+    docs_x = []
+    docs_y = []
 
-    image_array = np.asarray(image)
-    normalized_image_array = (image_array.astype(np.float32) / 127.0) - 1
-    data[0] = normalized_image_array
-    prediction = loaded_model.predict(data)
-    return (prediction)
+    stemmer = WordNetLemmatizer()
 
+    for intent in data["intents"]:
+        for pattern in intent["patterns"]:
+            wrds = nltk.word_tokenize(pattern)
+            words.extend(wrds)
+            docs_x.append(wrds)
+            docs_y.append(intent["tag"])
+
+        if intent["tag"] not in labels:
+            labels.append(intent["tag"])
+
+    words = [stemmer.lemmatize(w.lower()) for w in words if w != "?"]
+    words = sorted(list(set(words)))
+
+    labels = sorted(labels)
+    results = model.predict([bag_of_words(msg, words)])
+    results_index = numpy.argmax(results)
+    tag = labels[results_index]
+
+    for tg in data["intents"]:
+        if tg['tag'] == tag:
+            responses = tg['responses']
+
+    return (random.choice(responses))
 if __name__ == "__main__":
     app.run(debug=True)
